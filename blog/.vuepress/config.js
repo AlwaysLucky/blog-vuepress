@@ -4,6 +4,7 @@ module.exports = (options, context, api) => {
     title: "天真笔录",
     description: "Web development, Frontend, JavaScript",
     theme: "@vuepress/blog",
+    base: '/blog-vuepress/',
     plugins: [
       [
         "@vuepress/google-analytics",
@@ -15,19 +16,26 @@ module.exports = (options, context, api) => {
     themeConfig: {
       directories: [
         {
-          id: "css",
-          dirname: "_css",
-          title: "Css",
-          path: "/css/",
-          itemPermalink: "/css/:year/:month/:day/:slug"
+          id: "webpack",
+          dirname: "_webpack",
+          title: "Webpack",
+          path: "/webpack/",
+          itemPermalink: "/webpack/:year/:month/:day/:slug"
         },
-        {
-          id: "javascript",
-          dirname: "_javascript",
-          title: "Javascript",
-          path: "/javascript/",
-          itemPermalink: "/js/:year/:month/:day/:slug"
-        }
+        // {
+        //   id: "css",
+        //   dirname: "_css",
+        //   title: "Css",
+        //   path: "/css/",
+        //   itemPermalink: "/css/:year/:month/:day/:slug"
+        // },
+        // {
+        //   id: "javascript",
+        //   dirname: "_javascript",
+        //   title: "Javascript",
+        //   path: "/javascript/",
+        //   itemPermalink: "/js/:year/:month/:day/:slug"
+        // }
       ],
       sitemap: {
         hostname: "https://tzhen.com/"
@@ -51,17 +59,21 @@ module.exports = (options, context, api) => {
       // },
       nav: [
         {
-          text: "Css",
-          link: "/css/"
+          text: "Webpack",
+          link: "/webpack/"
         },
-        {
-          text: "Javascript",
-          link: "/javascript/"
-        },
-        {
-          text: "八股",
-          link: "/eight/"
-        }
+        // {
+        //   text: "Css",
+        //   link: "/css/"
+        // },
+        // {
+        //   text: "Javascript",
+        //   link: "/javascript/"
+        // },
+        // {
+        //   text: "八股",
+        //   link: "/eight/"
+        // }
       ],
       footer: {
         contact: [
@@ -84,7 +96,7 @@ module.exports = (options, context, api) => {
       smoothScroll: true
     },
     alias: {
-      "@assets": path.resolve(__dirname, "../assets")
+      "@assets": path.resolve(__dirname, "assets")
     }
   };
 };
