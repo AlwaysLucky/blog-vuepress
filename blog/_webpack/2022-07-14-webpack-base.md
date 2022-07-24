@@ -26,7 +26,7 @@ summary: webpack
 
 写入如下内容
 
-```
+```js
 const path = require('path')
 module.exports = {
   entry: './src/index.js',
@@ -41,14 +41,14 @@ module.exports = {
 
 ## 配置devServer，让我们的页面跑起来
 
-```
+```bash
 yarn add webpack-dev-server -D // 安装webpack-dev-server
 yarn add html-webpack-plugin -D // 用来输出html
 ```
 
 在webpack.config.js中做如下配置
 
-```
+```js
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 devServer: {
@@ -62,10 +62,16 @@ plugins: [
 
 ## 在package.json中的scripts添加dev命令
 
-```
+```json
 "scripts": {
   "dev": "webpack-dev-server --mode=development",
   "build": "webpack"
 },
 ```
 webpack-dev-server --mode=development在启动时添加参数，开发环境下最好添加mode=development,不然会报错
+
+## 启动yarn dev
+
+此时会在本地启动一个开发服务器localhost:8090
+
+我们的开发环境已经准备好了
