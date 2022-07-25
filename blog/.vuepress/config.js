@@ -22,6 +22,13 @@ module.exports = (options, context, api) => {
           path: "/webpack/",
           itemPermalink: "/webpack/:year/:month/:day/:slug"
         },
+        {
+          id: "browser",
+          dirname: "_browser",
+          title: "浏览器",
+          path: "/browser/",
+          itemPermalink: "/browser/:year/:month/:day/:slug"
+        },
         // {
         //   id: "css",
         //   dirname: "_css",
@@ -61,6 +68,10 @@ module.exports = (options, context, api) => {
         {
           text: "Webpack",
           link: "/webpack/"
+        },
+        {
+          text: "浏览器",
+          link: "/browser/"
         },
         // {
         //   text: "Css",
