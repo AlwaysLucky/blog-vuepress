@@ -36,16 +36,16 @@ module.exports = (options, context, api) => {
         //   path: "/css/",
         //   itemPermalink: "/css/:year/:month/:day/:slug"
         // },
-        // {
-        //   id: "javascript",
-        //   dirname: "_javascript",
-        //   title: "Javascript",
-        //   path: "/javascript/",
-        //   itemPermalink: "/js/:year/:month/:day/:slug"
-        // }
+        {
+          id: "javascript",
+          dirname: "_javascript",
+          title: "javascript",
+          path: "/javascript/",
+          itemPermalink: "/js/:year/:month/:day/:slug"
+        }
       ],
       sitemap: {
-        hostname: "https://tzhen.com/"
+        hostname: "https://tzhen.vip/"
       },
       // comment: {
       //   service: "vssue",
@@ -77,33 +77,34 @@ module.exports = (options, context, api) => {
         //   text: "Css",
         //   link: "/css/"
         // },
-        // {
-        //   text: "Javascript",
-        //   link: "/javascript/"
-        // },
+        {
+          text: "Javascript",
+          link: "/javascript/"
+        },
         // {
         //   text: "八股",
         //   link: "/eight/"
         // }
       ],
-      footer: {
-        contact: [
-          {
-            type: "github",
-            link: "https://github.com/alwayslucky"
-          },
-          {
-            type: "mail",
-            link: "mailto:dreamlife_li@qq.com"
-          }
-        ],
-        copyright: [
-          {
-            text: "tzhen Chin © 2020",
-            link: ""
-          }
-        ]
-      },
+      // footer: {
+      //   contact: [
+      //     {
+      //       type: "github",
+      //       link: "https://github.com/alwayslucky"
+      //     },
+      //     {
+      //       type: "mail",
+      //       link: "mailto:dreamlife_li@qq.com"
+      //     }
+      //   ],
+      //   copyright: [
+      //     {
+      //       text: "tzhen Chin © 2020",
+      //       link: ""
+      //     }
+      //   ]
+      // },
+      footer: false,
       smoothScroll: true
     },
     alias: {
