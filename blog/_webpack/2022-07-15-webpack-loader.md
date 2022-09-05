@@ -1,9 +1,10 @@
 ---
-title: webpack loader配置
+title: webpack搭建Vue项目
 date: 2022-07-15
 tags:
   - webpack
-  - loader
+  - vue
 summary: webpack
 ---
 
+## vue
