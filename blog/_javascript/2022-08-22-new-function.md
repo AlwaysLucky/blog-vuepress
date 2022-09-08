@@ -1,5 +1,5 @@
 ---
-title: new function(构造函数)都发生了什么
+title: new 一个函数内部发生了什么
 date: 2022-08-22
 tags:
   - new function
