@@ -29,13 +29,13 @@ module.exports = (options, context, api) => {
           path: "/browser/",
           itemPermalink: "/browser/:year/:month/:day/:slug"
         },
-        // {
-        //   id: "css",
-        //   dirname: "_css",
-        //   title: "Css",
-        //   path: "/css/",
-        //   itemPermalink: "/css/:year/:month/:day/:slug"
-        // },
+        {
+          id: "css",
+          dirname: "_css",
+          title: "Css",
+          path: "/css/",
+          itemPermalink: "/css/:year/:month/:day/:slug"
+        },
         {
           id: "javascript",
           dirname: "_javascript",
@@ -73,12 +73,12 @@ module.exports = (options, context, api) => {
           text: "浏览器",
           link: "/browser/"
         },
-        // {
-        //   text: "Css",
-        //   link: "/css/"
-        // },
         {
-          text: "Javascript",
+          text: "Css",
+          link: "/css/"
+        },
+        {
+          text: "JavaScript",
           link: "/javascript/"
         },
         // {
