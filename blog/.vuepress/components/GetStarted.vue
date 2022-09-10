@@ -1,6 +1,6 @@
 <template>
   <div class="start">
-    <router-link to="/webpack/">开始吧~</router-link>
+    <router-link to="/javascript/">开始吧~</router-link>
   </div>
 </template>
 

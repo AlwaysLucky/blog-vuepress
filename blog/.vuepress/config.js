@@ -66,20 +66,20 @@ module.exports = (options, context, api) => {
       // },
       nav: [
         {
-          text: "Webpack",
-          link: "/webpack/"
-        },
-        {
-          text: "浏览器",
-          link: "/browser/"
+          text: "JavaScript",
+          link: "/javascript/"
         },
         {
           text: "Css",
           link: "/css/"
         },
         {
-          text: "JavaScript",
-          link: "/javascript/"
+          text: "Webpack",
+          link: "/webpack/"
+        },
+        {
+          text: "浏览器",
+          link: "/browser/"
         },
         // {
         //   text: "八股",
