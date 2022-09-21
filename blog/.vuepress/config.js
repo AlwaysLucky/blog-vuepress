@@ -42,6 +42,13 @@ module.exports = (options, context, api) => {
           title: "javascript",
           path: "/javascript/",
           itemPermalink: "/js/:year/:month/:day/:slug"
+        },
+        {
+          id: "weapp",
+          dirname: "_weapp",
+          title: "weapp",
+          path: "/weapp/",
+          itemPermalink: "/weapp/:year/:month/:day/:slug"
         }
       ],
       sitemap: {
@@ -81,6 +88,10 @@ module.exports = (options, context, api) => {
           text: "浏览器",
           link: "/browser/"
         },
+        {
+          text: "小程序",
+          link: "/weapp/"
+        }
         // {
         //   text: "八股",
         //   link: "/eight/"
