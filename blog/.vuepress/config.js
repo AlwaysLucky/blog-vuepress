@@ -49,6 +49,13 @@ module.exports = (options, context, api) => {
           title: "weapp",
           path: "/weapp/",
           itemPermalink: "/weapp/:year/:month/:day/:slug"
+        },
+        {
+          id: "vue",
+          dirname: "_vue",
+          title: "vue",
+          path: "/vue/",
+          itemPermalink: "/vue/:year/:month/:day/:slug"
         }
       ],
       sitemap: {
@@ -68,7 +75,7 @@ module.exports = (options, context, api) => {
       //     "https://gmail.us5.list-manage.com/subscribe/post?u=942c0d587f8ea28269e80d6cd&amp;id=d77d789d53"
       // },
       // feed: {
-      //   canonical_base: "https://billyyyyy3320.com/",
+      //   canonical_base: "https://tzhen.vip",
       //   posts_directories: ["/_en/"]
       // },
       nav: [
@@ -91,6 +98,10 @@ module.exports = (options, context, api) => {
         {
           text: "小程序",
           link: "/weapp/"
+        },
+        {
+          text: "Vue",
+          link: "/vue/"
         }
         // {
         //   text: "八股",
