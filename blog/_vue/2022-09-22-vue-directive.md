@@ -10,29 +10,27 @@ summary: vue
 ![计数器](https://tzhen.vip/assets/countNumber.png)
 ## 实现
 ```html
-<textarea v-model="inputValue" v-count="100" placeholder="疯狂输出..."></textarea>
+<textarea v-model="inputValue" v-count="100" placeholder="输入.."></textarea>
 ```
 ```js
-<script setup>
-  import { ref } from "vue";
-  const vCount = {
-    mounted(el, binding) {
-      const element = document.createElement('span')
-      const maxValue = binding.value
-      el.maxLength = maxValue
-      document.addEventListener('input', function(event) {
-        if (el.value.length > maxValue) return
-        element.textContent = `${el.value.length}/${maxValue}`
-        el.insertAdjacentElement('afterend', element);
-      })
-    }
+app.directive('count', {
+  mounted(el, binding) {
+    const element = document.createElement('span')
+    const maxValue = binding.value
+    el.maxLength = maxValue
+    element.style.display = 'inline-block';
+    element.style.transform = 'translate(-130%, -20%)';
+    element.textContent = `${el.value.length}/${maxValue}`
+    el.insertAdjacentElement('afterend', element);
+    document.addEventListener('input', function(event) {
+      element.textContent = `${el.value.length}/${maxValue}`
+      el.insertAdjacentElement('afterend', element);
+    })
   }
-
-  const inputValue = ref('')
-</script>
+})
 ```
-* vue3与vue2注册指令的方式有所不同，这里使用的是局部注册
-* 核心逻辑就是使用binding接收v-count=“20”传过来的值，然后给textarea设置maxLen
+* vue3与vue2注册指令的方式有所不同
+* 核心逻辑就是使用binding接收v-count=“100”传过来的值，然后给textarea设置maxLen
 * 为textraea绑定input事件，获取到输入的值
 * 创建动态元素span插入到`textarea`的后面
 ## 指令钩子(官方)
