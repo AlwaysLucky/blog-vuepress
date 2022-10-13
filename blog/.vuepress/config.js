@@ -108,25 +108,24 @@ module.exports = (options, context, api) => {
         //   link: "/eight/"
         // }
       ],
-      // footer: {
-      //   contact: [
-      //     {
-      //       type: "github",
-      //       link: "https://github.com/alwayslucky"
-      //     },
-      //     {
-      //       type: "mail",
-      //       link: "mailto:dreamlife_li@qq.com"
-      //     }
-      //   ],
-      //   copyright: [
-      //     {
-      //       text: "tzhen Chin © 2020",
-      //       link: ""
-      //     }
-      //   ]
-      // },
-      footer: false,
+      footer: {
+        // contact: [
+        //   {
+        //     type: "github",
+        //     link: "https://github.com/alwayslucky"
+        //   },
+        //   {
+        //     type: "mail",
+        //     link: "mailto:dreamlife_li@qq.com"
+        //   }
+        // ],
+        copyright: [
+          {
+            text: "豫ICP备2022017924号-1",
+            link: "https://beian.miit.gov.cn/"
+          }
+        ]
+      },
       smoothScroll: true
     },
     alias: {
