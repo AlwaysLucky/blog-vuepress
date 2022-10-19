@@ -1,11 +1,9 @@
 ---
-title: 手写call、apply、bind
+title: call、apply、bind的实现
 date: 2022-08-20
 tags:
-  - call
-  - apply
-  - bind
-summary: 手写系列
+  - 手写系列
+summary: call、apply、bind
 ---
 
 ## call
@@ -45,7 +43,12 @@ function foo(a, b, c, d) {
   return a + b + c + d
 }
 
-const bar = foo.bind({name: 'tianzhen'}, 1, 2, 3)
-const result = bar(4, 5)
+const bar = foo.tbind({name: 'tianzhen'}, 1, 2, 3)
+const result = bar(4)
 console.log('result2==========================', result)
+```
+### 存在的问题
+```js
+const b = new bar(4)
+console.log(b instanceof foo) 
 ```

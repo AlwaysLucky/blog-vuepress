@@ -1,5 +1,5 @@
 ---
-title: instanceof实现
+title: instanceof的实现
 date: 2022-10-19
 tags:
   - 手写系列
