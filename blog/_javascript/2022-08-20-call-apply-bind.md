@@ -47,8 +47,36 @@ const bar = foo.tbind({name: 'tianzhen'}, 1, 2, 3)
 const result = bar(4)
 console.log('result2==========================', result)
 ```
-### 存在的问题
+### bind存在的问题
+> 上面的实现只适用普通函数，不能作为构造函数使用
 ```js
-const b = new bar(4)
-console.log(b instanceof foo) 
+function Person(name) {
+  this.name = name
+}
+Person.prototype.say = function() {
+  console.log(this.name)
+}
+const obj = {
+  age: 20
+}
+const bindPerson = Person.tbind(obj, 'tianzhen')
+const b = new bindPerson()
+console.log(b.name) // undefined
+console.log(obj.say()) // 报错
+```
+## 添加构造函数
+```js
+Function.prototype.tbind = function(thisArg, ...orignArgs) {
+  const fn = this
+  let _thisArg = (thisArg === null || thisArg === undefined) ? window : Object(thisArg)
+  function bound(...sourceArgs) {
+    this instanceof bound && (_thisArg = this) // 构造函数时改变this
+    _thisArg.fn = fn
+    const result = _thisArg.fn(...[...orignArgs, ...sourceArgs])
+    delete _thisArg.fn
+    return result
+  }
+  bound.prototype = Object.create(fn.prototype) // 继承
+  return bound
+}
 ```

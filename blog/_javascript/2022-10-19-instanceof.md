@@ -43,7 +43,7 @@ function _instanceof(Left, Right) {
 ## 实现2
 ```js
 function _instanceof(Left, Right) {
-	if( typeof Left !== 'object' || Left === null) {
+	if(typeof Left !== 'object' || Left === null) {
 		return false
 	}
 
