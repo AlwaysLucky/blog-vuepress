@@ -1,11 +1,10 @@
 ---
-title: css review
+title: CSS查漏补缺
 date: 2022-11-15
 tags:
   - css
-summary: css review
+summary: CSS查漏补缺
 ---
-
 
 ## 移动端1px的问题
 移动端设置1px而实际情况要比1px粗一点
@@ -62,7 +61,36 @@ css世界的结界：内部形成一个封闭空间，里面的元素不会影�
 
 ## 隐藏元素的方法
 ## 单行多行文本溢出
+### 单行
+```css
+.单行溢出 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* 
+  1. 上述代码只适用块级元素
+  2. white-space: 控制空白字符排版问题；nowrap: 空白符合并，换行符无效；值还有: normal、pre、pre-line、pre-wrap
+  3. overflow: hidden; 必须要配合white-space: nowrap；才能生效
+  4. 内联元素还需设置display: block/inline-block + width; 这样overflow:hidden,white-space:nowrap；才生效
+*/
+```
+> class名称使用中文是支持的，你没有看错
+### 多行
+```css
+.多行溢出 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+```
 ## 伪元素伪类
+1. 伪类表状态
+2. 伪元素是内容元素前后插入额外的元素；伪元素是真实元素，但不在文档中生成
+3. `::`双冒号表示伪元素；`:`单冒号表示伪类
+4. 由于早期css`:`伪元素与伪类都是单冒号表示，css3规定了`::`表示伪元素，使用`:`是为了兼容旧版本浏览器（单双冒号的区别）
 ## 预处理器、后处理器
 ## 判断元素是否达到可视区域
 ## line-height
