@@ -34,9 +34,9 @@ summary: CSS查漏补缺
 ```
 实现单边1px与上述方法类似；不再展示代码
 ## display:none与visibility:hidden
-- 渲染： 渲染树；占据空间
+- 渲染： display:none: 不在渲染树中，不占空间；visibility:hidden：存在渲染树中，占据空间
 - 继承： 继承与非继承；设置visibility:visible显示的原因；渲染树中存在
-- 重排/重绘：常规流display->文档重排；visibility本元素重绘
+- 重排/重绘：常规流修改display会触发文档重排；visibility在本元素触发重绘
 - 读屏设备：忽略display:none; 读取visibility:hidden
 ## link与@import
 - 兼容：link出现更早，兼容性更好
@@ -52,9 +52,25 @@ css世界的结界：内部形成一个封闭空间，里面的元素不会影�
 2. overflow: scroll, auto, hidden
 3. position: absolute, fixed
 4. display: table-cell, table-caption, inline-block
-5. floag的值不为none
+5. float的值不为none
 ## 层叠上下文
-搁置
+是HTML中的一个三维的概念。如果一个元素含有层叠上下文，则比不具有层叠上下文的层级要高。
+### 创建层叠上下文
+1. 根层叠上下文`<html>`元素
+2. position: relative/absolute; 且z-index: 数值
+3. position: fixed;
+4. CSS3中的层叠上下文
+    - 父元素display:flex/inline-flex, 子元素z-index: 数值
+    - opacity值不是1
+    - transform值不是none
+    - mix-blend-mode值不是normal
+    - filter值不是none
+### 层叠水平
+![层叠水平](https://img0.baidu.com/it/u=2071015463,1032901003&fm=253&fmt=auto&app=138&f=PNG?w=570&h=500)
+### 层叠顺序
+同一层叠上下文下：
+* 具有层叠水平的元素；层叠水平值大的在最上面
+* 水平相同情况下后来者覆盖前者
 ## position:absolute相对于哪个元素定位
 position: static|relative|absolute|fixed|sticky
 > 非static的父级元素都可以限制absolute范围，包括它自己
@@ -94,7 +110,7 @@ position: static|relative|absolute|fixed|sticky
   overflow: hidden;
 }
 ```
-## 伪元素伪类
+## 伪元素与伪类
 1. 伪类表状态
 2. 伪元素是内容元素前后插入额外的元素；伪元素是真实元素，但不在文档中生成
 3. `::`双冒号表示伪元素；`:`单冒号表示伪类
@@ -102,7 +118,7 @@ position: static|relative|absolute|fixed|sticky
 ## 预处理器、后处理器
 ## 判断元素是否达到可视区域
 ## line-height
-
+搁置
 ## 场景应用：
 1. 三角形
 2. 扇形
@@ -118,5 +134,23 @@ position: static|relative|absolute|fixed|sticky
   clear: both;
 }
 ```
-
 ## css选择器的优先级
+1. 0级：通配符、选择符、逻辑组合伪类
+    - 通配符： *
+    - 选择符：+ > ~ 空格
+    - 逻辑组合伪类：:not() :is() :where
+2. 1级：标签
+3. 2级：类、属性、伪类
+4. 3级： ID
+5. 內联`<style></style>`
+6. `!important`
+### 选择器优先级计算规则：数值计算法
+| 选择器 | 计算值 |
+|--------|--------|
+| *      | 0      |
+| 标签   | 1      |
+| class  | 10     |
+| ID     | 100    |
+> .box > a.item:hover = 10 + 1 + 10 + 10
+### 优先级不可越级
+比如11个class计算值是110；但是优先级还是不能大于ID
