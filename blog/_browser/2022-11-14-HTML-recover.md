@@ -125,9 +125,85 @@ worker.postMessage('hello')
 ```
 
 ## 离线存储怎么使用？工作原理是什么
-搁置
+### 离线存储方案
+1. html5 manifest(App Cache)已废弃，不推荐使用
+2. Service Worker
+    - 运行在主线程之外，不会阻塞渲染
+    - 只支持https，也支持本地localhost
+    - 页面和网络之间的拦截器角色，缓存和拦截请求
+    - 拦截请求 -> 检查是否缓存过 -> 是: 使用缓存, 否: 发起请求
+### 如何使用
+1. 注册
+```js
+/*
+	* 注册路径是相对于origin，不是当前js文件位置
+	* /demo/serviceWorker/worker2.js只能管理/demo/serviceWorker/路径下的页面和资源
+	* /worker.js根路径则可以接管所以页面资源
+*/
+window.navigator.serviceWorker.register('/demo/serviceWorker/worker.js')
+.then(function () {
+	console.log('注册成功')
+}).catch(err => {
+	console.error("注册失败")
+})
+```
+2. 安装和激活
+```js
+const CACHE_NAME = 'fed-cache'
+// 注册成功之后会触发install，这里可以做一些初始化工作，也可以等在此访问的时候利用fetch做缓存
+self.addEventListener('install', event => {
+  // 创建和打开一个缓存库
+  caches.open(CACHE_NAME)
+  let cacheResources = ['/demo/serviceWorker/']
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(cacheResources)
+    })
+  )
+})
+// install之后出发active
+self.addEventListener('active', event => {
+  console.log('service worker is active')
+})
+```
+3. fetch资源添加cache
+```js
+// 激活之后就能监听fetch事件了
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(res => {
+      // 命中缓存
+      if (res) {
+        return res
+      }
+      return util.fetchPut(event.request.clone())
+    })
+  )
+})
 
-## 浏览器如何对HTML5的离线存储资源进行管理和加载？
+let util = {
+  fetchPut: function(request, callback) {
+    fetch(request).then(response => {
+      console.log('fetchPut')
+      // 跨域直接return
+      if(!response || response.status !== 200 || response.type !== 'basic') {
+        return response
+      }
+      util.putCache(request, response)
+      typeof callback === 'function' && callback()
+      return response.clone();
+    })
+  },
+  putCache: function(request, resource) {
+    if (request.method === 'GET') {
+      caches.open(CACHE_NAME).then(cache => {
+        cache.put(request, resource)
+      })
+    }
+  }
+}
+```
+## 离线存储资源如何更新？
 搁置
 
 ## title与h1，b与strong，i与em的区别
