@@ -79,7 +79,7 @@ fooContext.VO = {
   this: globalContext.VO
 }
 /*
- * 对于函数来说，VO用AO(Active Object)表示；这是只有进入一个执行上下文中，这个变量对象才被激活，属性才能被访问。函数的VO是不能访问的
+ * 对于函数来说，VO用AO(Active Object)表示；因为进入一个执行上下文中，这个变量对象才被激活，属性才能被访问。函数的VO是不能访问的
  * arguments是函数独有的对象，箭头函数没有
  * arguments是伪数组，有length属性且通过下标访问
  * arguments.caller：调用者，arguments.callee函数本身
@@ -107,3 +107,9 @@ fooContext.scope = [
 ```
 ### 再来分析一下上面代码的结果
 执行fn时，其实就是执行bar，此时bar函数的执行上下文没有a变量，则去全局上下文中查找，所以找到了20
+
+## 原型、原型链与继承
+
+## 事件机制
+
+## 渲染机制
