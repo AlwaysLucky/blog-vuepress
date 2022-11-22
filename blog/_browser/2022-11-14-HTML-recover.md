@@ -137,7 +137,7 @@ worker.postMessage('hello')
 ```js
 /*
 	* 注册路径是相对于origin，不是当前js文件位置
-	* /demo/serviceWorker/worker2.js只能管理/demo/serviceWorker/路径下的页面和资源
+	* /demo/serviceWorker/worker.js只能管理/demo/serviceWorker/路径下的页面和资源
 	* /worker.js根路径则可以接管所以页面资源
 */
 window.navigator.serviceWorker.register('/demo/serviceWorker/worker.js')
@@ -203,6 +203,7 @@ let util = {
   }
 }
 ```
+demo: [https://tzhen.vip/demo/serviceWorker](https://tzhen.vip/demo/serviceWorker)
 ## 离线存储资源如何更新？
 搁置
 
