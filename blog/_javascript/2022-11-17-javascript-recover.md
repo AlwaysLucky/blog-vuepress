@@ -109,7 +109,48 @@ fooContext.scope = [
 执行fn时，其实就是执行bar，此时bar函数的执行上下文没有a变量，则去全局上下文中查找，所以找到了20
 
 ## 原型、原型链与继承
+这一块比较抽象，直接用代码来分析
+```js
+function Person() {}
+```
+* 函数Person的原型是什么？---- `Person.prototype`这个就叫做函数Person的原型
+* 每一个函数都有`prototype`，它的值是一个对象
+* `prototype`中又有一个`constructor`,它指向函数本身。Person.prototype.constructor === Person
+### 原型链
+原型链的主角是`__proto__`，又叫做隐式原型，接着修改下上面的代码
+```js
+function Person(name) {
+  this.name = name
+}
+Person.prototype.running = function() {
+  console.log(this.name + 'is running')
+}
+const p = new Person('tianzhen')
+p.running()
+```
+关于new一个function可以参考另一篇文章[new 一个函数内部发生了什么](/js/2022/08/22/new-function/)
+* 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 事件机制
 
-## 渲染机制
+## 渲染机制 
