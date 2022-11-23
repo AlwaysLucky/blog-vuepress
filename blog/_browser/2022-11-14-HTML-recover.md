@@ -136,9 +136,9 @@ worker.postMessage('hello')
 1. 注册
 ```js
 /*
-	* 注册路径是相对于origin，不是当前js文件位置
-	* /demo/serviceWorker/worker.js只能管理/demo/serviceWorker/路径下的页面和资源
-	* /worker.js根路径则可以接管所以页面资源
+ * 注册路径是相对于origin，不是当前js文件位置
+ * /demo/serviceWorker/worker.js只能管理/demo/serviceWorker/路径下的页面和资源
+ * /worker.js根路径则可以接管所以页面资源
 */
 window.navigator.serviceWorker.register('/demo/serviceWorker/worker.js')
 .then(function () {
@@ -205,7 +205,10 @@ let util = {
 ```
 demo: [https://tzhen.vip/demo/serviceWorker](https://tzhen.vip/demo/serviceWorker)
 ## 离线存储资源如何更新？
-搁置
+1. worker.js容更新，或文件名更新，会重新出发install
+2. 浏览器重启时就会替换worker.js，也可以使用self.skipWaiting()跳过重启
+### HTML如何更新
+service worker是在html中注册的，但是如果把html也缓存了，html从缓存中取，就会导致无法更新service worker
 
 ## title与h1，b与strong，i与em的区别
 * title属性没有明确意义，只表示是个标题；h1表示层次明确的标题，对页面信息抓取seo有很大影响
