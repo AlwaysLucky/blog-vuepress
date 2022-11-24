@@ -150,6 +150,50 @@ typeof Function.prototype === 'function'
 ### 继承
 见另一篇[继承的几种方式](/js/2022/11/24/jicheng/)
 
+## 事件
+### 事件类型
+1. 鼠标类
+- click
+- dbclick
+- mousedown 按下未弹起
+- mouseup 鼠标弹起
+- mousemove 移动
+- mouseover 移动到元素上方
+- mouseenter 首次从外部移入目标元素上方
+- mouseleave 移除
+2. 键盘类
+- keydown 键盘按下任意键
+- keyup 按键收起
+- keypress 按下任意字符，按住不放会一直触发
+3. HTML类型
+    1. 表单
+        - select 选择文本框(text/textarea)一个或多个字符触发
+        - change
+        - input
+        - focus
+        - blur
+        - submit
+        - reset
+    2. 窗口
+        - load
+        - unload
+        - resize
+        - scroll
+### 事件传播
+1. 传播类型
+    - 冒泡：由内而外，粒度从细到粗
+    - 捕获: 由外而内，粒度从粗到细
+2. 事件流
+捕获阶段 => 目标触发阶段 =>  冒泡阶段
+> 阻止冒泡: stopPropagation
+
+### 事件绑定
+1. dom0级事件
+    - 行内绑定
+2. dom2级事件
+    - addEventListener
+    - removeEventListener
+> dom2级 > dom0级
 
 
 
@@ -163,6 +207,15 @@ typeof Function.prototype === 'function'
 
 
 
-## 事件机制
+
+
+
+
+
+
+
+
+
+
 
 ## 渲染机制 
