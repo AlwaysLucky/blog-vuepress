@@ -147,9 +147,8 @@ Function.__proto__ === Function.prototype
 // Function.prototype是函数，但是Function.prototype__proto__=Object.Prototype，据说是为了兼容旧ECMAScript
 typeof Function.prototype === 'function' 
 ```
-
-
-
+### 继承
+见另一篇[继承的几种方式](/js/2022/11/24/jicheng/)
 
 
 

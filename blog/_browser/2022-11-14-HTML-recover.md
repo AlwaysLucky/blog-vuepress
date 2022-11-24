@@ -242,7 +242,7 @@ for + id 表示一组有关系的控件
 
 ## 浏览器乱码的原因？如何解决？
 产生原因：
-* 网页源代码使用gbk编码，网页是utf-8编码，这样浏览器打开即会出现html乱码，反之亦然;(https://tzhen.vip/demo/gbk.html)
+* 网页源代码使用gbk编码，网页是utf-8编码，这样浏览器打开即会出现html乱码，反之亦然;[https://tzhen.vip/demo/gbk.html](https://tzhen.vip/demo/gbk.html)
 * html网页编码是gbk，程序从数据库中调出呈现utf-8编码的内容也会造成编码乱码
 * 浏览器不能自动检测网页编码，造成网页乱码
 解决办法：
