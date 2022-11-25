@@ -58,7 +58,7 @@ summary: flex查漏补缺
 .flex{
   width: 300px;
 }
-// 为了方便计算, 我们为第一项分配固定20px
+// 为了方便计算, 我们为第一项分配固定18px
 .flex-child:nth-of-type(1){
   flex: 2 0 18px;
 }

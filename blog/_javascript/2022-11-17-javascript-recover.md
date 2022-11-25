@@ -26,7 +26,7 @@ function foo(fn) {
 }
 foo(bar); // 20
 ```
-> 上述代码分别存在：全局执行上下文、bar函数执行上下文、foo函数执行上下文；fn其实时bar的引用，所以bar=fn
+> 上述代码分别存在：全局执行上下文、bar函数执行上下文、foo函数执行上下文；fn其实是bar的引用，所以bar=fn
 * 多个执行上下文如何管理->执行上下文栈
 ```js
 // 执行函数以前只有globalContext
