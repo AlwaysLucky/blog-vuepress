@@ -48,7 +48,8 @@ const result = bar(4)
 console.log('result2==========================', result)
 ```
 ### bind存在的问题
-> 上面的实现只适用普通函数，不能作为构造函数使用
+1. bind还可以作为构造函数使用，会忽略绑定的this
+2. bind柯里化
 ```js
 function Person(name) {
   this.name = name
@@ -59,12 +60,12 @@ Person.prototype.say = function() {
 const obj = {
   age: 20
 }
-const bindPerson = Person.tbind(obj, 'tianzhen')
-const b = new bindPerson()
+const bindPerson = Person.tbind(obj, 'tianzhen') // 返回的是一个匿名函数
+const b = new bindPerson() // Person函数没有返回值，所以b是一个默认空对象
 console.log(b.name) // undefined
-console.log(obj.say()) // 报错
+console.log(obj.say()) // 报错(找不到say方法)
 ```
-## 添加构造函数
+## 完善bind
 ```js
 Function.prototype.tbind = function(thisArg, ...orignArgs) {
   const fn = this
