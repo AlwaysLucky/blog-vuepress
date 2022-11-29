@@ -29,18 +29,26 @@ function debounce(fn, delay = 500) {
 function debounce(fn, delay = 500, immediate = false) {
   let timeId = null
   let execImmediate = immediate
+  let immediateId = null
 
   const _debounce = function(...args) {
     if (timeId) clearTimeout(timeId)
-    if(execImmediate) { // 存在的问题：立即执行后过了很长一段时间再次执行时不会立即执行
+    if (immediateId) clearTimeout(immediateId)
+    if(execImmediate) {
       fn.apply(this, args)
       execImmediate = !immediate
+      immediateId = setTimeout(() => {
+        execImmediate = immediate // 还原
+        immediateId = null
+      }, delay)
       return
     }
 
     timeId = setTimeout(() => {
+    if (immediateId) clearTimeout(immediateId)
       fn.apply(this, args)
       timeId = null
+      immediateId = null
       execImmediate = immediate
     }, delay)
   }
@@ -196,7 +204,7 @@ function throttle(fn, interval) {
   return _throttle
 }
 ```
-2. **添加首次是否执行**
+2. **添加立即执行**
 ```js
 function throttle(fn, interval, options = {
   leading: false
