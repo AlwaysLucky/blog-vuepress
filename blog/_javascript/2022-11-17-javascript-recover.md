@@ -114,7 +114,7 @@ fooContext.scope = [
 ```js
 function Person() {}
 ```
-* 函数Person的原型是什么？--`Person.prototype`这个就叫做函数Person的原型
+* 函数Person的原型是什么？--`Person.__proto__ === Function.prototype`这个就叫做函数Person的原型
 * 每一个函数都有`prototype`，它的值是一个对象
 * `prototype`中又有一个`constructor`,它指向函数本身。Person.prototype.constructor === Person
 ### 原型链
@@ -131,14 +131,14 @@ p.running()
 ```
 关于new一个function可以参考另一篇文章[new 一个函数内部发生了什么](/js/2022/08/22/new-function/)
 * 为什么p.running可以运行?
-1. 每一个对象都有__proto__属性，它指向创建该对象的函数的prototype
+1. 每一个**对象**都有__proto__属性，它指向创建该对象的函数的prototype
 2. 即`p.__proto__ === Person.prototype`
 3. 如果一个属性在自己内部找不到就会去原型上找,running方法在Person.prototype找到
 * Person函数有没有__proto__？，指向哪里？
 1. 函数也是对象，所以它也有`__proto__`
 2. 上面说到`__proto__`指向创建该对象的函数的prototype
 3. 那么是谁创建了Person? -- `Function`
-4. 即Person.__proto__ === Function.prototype
+4. 即`Person.__proto__` === `Function.prototype`
 * 像`apply`,`call`这些方法就是在Function.prototype中定义的，所以可以直接使用
 ```js
 Function.prototype.hasOwnProperty('apply') // true
