@@ -194,7 +194,7 @@ function throttle(fn, interval) {
   function _throttle() {
     let nowTime = Date.now()
     let remainTime = interval - (nowTime - lastTime)
-    if(remainTime <= 0) { // 第一次是负数，也会执行
+    if(remainTime <= 0) { // 第一次是负数，会触发立即执行
       fn()
       lastTime = nowTime
       return
@@ -221,6 +221,48 @@ function throttle(fn, interval, options = {
       fn()
       lastTime = nowTime
       return
+    }
+  }
+
+  return _throttle
+}
+```
+* 存在的问题
+    - 设置leading:false,假如只触发了一次，则也不会再执行
+3. **添加最后一次是否执行**
+```js
+const obj = {
+  leading: true,
+  trailing: false
+}
+
+function throttle(fn, interval, options = obj) {
+  let lastTime = 0
+  let timeId = null // 新增
+  const { leading, trailing } = options
+  function _throttle() {
+    let nowTime = Date.now()
+    if(lastTime === 0 && leading !== true) {
+      lastTime = nowTime // 避开首次执行
+    }
+    let remainTime = interval - (nowTime - lastTime) // interval - (nowTime - lastTime) = interval - 0
+    if(remainTime <= 0) { // 新增
+      if(timeId) {
+        clearTimeout(timeId)
+        timeId = null
+      }
+      fn()
+      lastTime = nowTime
+      return
+    }
+
+    // 最后一次执行 新增
+    if(trailing && !timeId) {
+       timeId = setTimeout(() => {
+        fn()
+        timeId = null
+        lastTime  = leading === true ? Date.now() : 0 // leading:true时设置当前时间避免重复执行
+      }, remainTime);
     }
   }
 
