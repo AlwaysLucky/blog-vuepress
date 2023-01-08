@@ -203,7 +203,32 @@ let util = {
   }
 }
 ```
-demo: [https://tzhen.vip/demo/serviceWorker](https://tzhen.vip/demo/serviceWorker)
+4. 添加到桌面
+准备一个manifest.json文件
+```json
+{
+  "background_color": "purple",
+  "description": "test pwa",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "./icon/dog.png",
+      "sizes": "192x192"
+    }
+  ],
+  "name": "Awesome dog",
+  "short_name": "dog",
+  "start_url": "."
+}
+```
+在html中引入manifest.json文件
+```html
+<link rel="manifest" href="manifest.json">
+```
+添加完成后，在地址栏中就会出现一个安装的按钮
+
+demo: 
+[https://tzhen.vip/demo/serviceWorker](https://tzhen.vip/demo/serviceWorker)
 ## 离线存储资源如何更新？
 1. worker.js容更新，或文件名更新，会重新出发install
 2. 浏览器重启时就会替换worker.js，也可以使用self.skipWaiting()跳过重启
