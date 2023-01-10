@@ -6,6 +6,51 @@ tags:
 summary: JavaScript查漏补缺
 ---
 
+## 数据类型
+### 基本类型
+    - string
+    - number
+    - boolean
+    - null
+    - undefined
+    - symbol
+    - bigInt
+- 存储位置：栈
+- 存储特性：占用空间小，大小固定，操作频繁
+- 效果：赋值后，不存在引用关系
+### 引用类型
+      - object(Array, Function, Math, Regexp)
+- 存储位置：堆
+- 存储特性：数据量大，大小不固定，赋值是赋址(地址)
+- 效果：赋值后，存在引用关系
+### 类型转换
+#### 转字符串
+    - String(null) // 'null'
+    - String(undefined) // 'undefined'
+    - String(true) // 布尔值 'true' 'false'
+    - String(123) // '123', 大数值 => 指数形式
+    - String(Symbol()) // 'Symbol()'
+    - String({}) // '[object Object]'
+#### 转数字
+    - Number(null) // 0
+    - Number(undefined) // NaN
+    - Number(true) // 1, 0
+    - Number('123') // 123, '指数形式'
+    - Number('012') // 12 忽略前导0
+    - Number('123a') // 包含非数字 NaN
+    - Number({}) // valueOf() ? NaN : toString()
+#### 转布尔
+    - undefined | null | false | +0 -0 | '' | NaN => false
+    - 除以上情况，都为true
+### NaN与Number.isNaN
+```js
+isNaN(NaN) // true
+Number.isNaN(NaN) // true
+
+isNaN('a') // true
+Number.isNaN('a') // false
+```
+> isNaN存在的问题：非数字会尝试转换数字，如果不能转换，则返回true
 ## 执行上下文
 1. `全局执行上下文`：执行JS前就已创建
 2. `函数执行上下文`：函数执行前创建
