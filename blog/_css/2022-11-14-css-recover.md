@@ -118,7 +118,51 @@ position: static|relative|absolute|fixed|sticky
 ## 预处理器、后处理器
 ## 判断元素是否达到可视区域
 ## line-height
-搁置
+### 高度是谁决定的
+```
+<div class="l1">line-height 1</div>
+<div class="l2">line-height 2</div>
+<div class="l3"></div>
+
+.l1{
+  line-height: 0
+}
+.l2,.l3{
+  line-height: 20px
+}
+```
+* l1 高度为0
+* l2 高度为20px
+* l3高度为0
+> line-height只能作用于內联元素；所以l3高度为0；l1虽然有内容，但是受line-height作用；高度也为0
+### 內联元素的line-height
+1. 非替换纯內联元素的高度完全由line-height决定（文本）
+2. 內联元素的高度由固定高度和行距决定
+    - 行距：在css中，行距在文本的上方下方
+    - 计算行距：(line-height - font-size)
+### line-height的值
+1. normal：因字体的不同具体值也不同，所以需要重置normal
+2. 数值：1.5；计算规则：1.5 * font-size
+3. 百分比：150%；计算规则：150% * font-size
+4. 长度值：20px；1.5em = 1.5 * font-size；(em是相对font-size的相对单位)
+### line-height与vertical-align
+```html
+<style>
+  .box { line-height: 32px; }
+  .box > span { font-size: 24px; }
+</style>
+<div class="box">
+  <span>天真</span>
+</div>
+```
+此时的box高度并不是40px;此时已出现幽灵空白节点；所以box的高度是40px;而span的高度也是40px;但是由于span的字体设置了24px;而box默认的字体是16px；24px与16px明显无法在基线上对其；所以产生了位移；而位移值够大的话就会出现box高度偏大的情况
+#### 解决
+1. 方法一：span设置vertical-align: top // 改变对齐位置
+2. 方法二：box设置font-size: 24px // 字号与span一致
+
+#### 区别
+1. 对于数值；自元素会继承数值
+2. 对于百分比或长度；则会继承最终的计算值
 ## 场景应用：
 1. 三角形
 2. 扇形
