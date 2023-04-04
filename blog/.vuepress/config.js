@@ -131,6 +131,14 @@ module.exports = (options, context, api) => {
     alias: {
       "@assets": path.resolve(__dirname, "assets")
     },
-    port: 8090
+    port: 8090,
+    configureWebpack: (config, isServer) => {
+      if (!isServer) {
+        // 修改客户端的 webpack 配置
+        // config.devServer = {
+        //   contentBase: path.join(__dirname, '../assets')
+        // }
+      }
+    }
   };
 };
