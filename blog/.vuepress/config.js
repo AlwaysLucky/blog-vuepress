@@ -56,6 +56,13 @@ module.exports = (options, context, api) => {
           title: "vue",
           path: "/vue/",
           itemPermalink: "/vue/:year/:month/:day/:slug"
+        },
+        {
+          id: "node",
+          dirname: "_node",
+          title: "node",
+          path: "/node/",
+          itemPermalink: "/node/:year/:month/:day/:slug"
         }
       ],
       sitemap: {
@@ -102,6 +109,10 @@ module.exports = (options, context, api) => {
         {
           text: "Vue",
           link: "/vue/"
+        },
+        {
+          text: "Node",
+          link: "/node/"
         }
         // {
         //   text: "八股",
