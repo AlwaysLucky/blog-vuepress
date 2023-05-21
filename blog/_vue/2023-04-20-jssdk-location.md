@@ -6,7 +6,7 @@ tags:
 summary: weixin
 ---
 
-### 一、正确配置JSSDK
+### 正确配置JSSDK
 [具体配置参照微信公众号JSSDK文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html)
 ```
 wx.config end
@@ -14,7 +14,17 @@ wx.config end
 ```
 当出现`config:ok`时配置成功
 
-### 二、配置获取location权限
+### 注意事项
+1. 路由设置`history`模式，`hash`模式需要截取`#`前面的部分
+2. 传输url时须是动态路由（有坑）
+    1. `IOS`要获取首次进入是的`url`，并存储已备后续使用
+    2. `Android`需要动态获取`url`
+3. 对url参数做`encodeURIComponent`
+    1. 复杂参数还需要进行`base64`或其他加密传输
+      * 如：&model=iphonex (GSM+CDMA)
+      * 上述问题在传参手机型号时，一直出现`invalid signature`，最终进行`base64`传输解决
+
+### 配置获取location权限
 ```js
 wx.config({
   jsApiList: [
@@ -22,10 +32,3 @@ wx.config({
   ]
 })
 ```
-
-### 注意事项
-1. 路由设置`history`模式，否则需要截取`#`前面的部分
-2. 如果需要分享；`url`需要`encodeURIComponent`
-3. 传输url时须是动态路由（有坑）
-    1. 安卓是需要动态获取的
-    2. `ios`则需要使用进入页面时使用的url；并做保存；后续都要使用此url
