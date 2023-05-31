@@ -21,7 +21,7 @@ wx.config end
     2. `Android`需要动态获取`url`
 3. 对url参数做`encodeURIComponent`
     1. 复杂参数还需要进行`base64`或其他加密传输
-      * 如：&model=iphonex (GSM+CDMA)
+      * 如：&model=iPhone X (GSM+CDMA)<iPhone10,3>iOS 16.0.2
       * 上述问题在传参手机型号时，一直出现`invalid signature`，最终进行`base64`传输解决
 
 ### 配置获取location权限
