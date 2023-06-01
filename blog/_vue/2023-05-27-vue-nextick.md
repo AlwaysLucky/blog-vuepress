@@ -6,7 +6,7 @@ tags:
 summary: vue异步更新策略
 ---
 
-### set数据更新
+### 数据更新的起点
 ```js
 set(newVal) {
   dep.notify()
@@ -30,13 +30,14 @@ if (this.lazy) {
 } else if (this.sync) {
   this.run()
 } else {
-  queueWatcher(this)
+  queueWatcher(this) // this是当前watcher实例
 }
 ```
 
 **queueWatcher**
 ```js
 // src/core/observer/scheduler.js
+const queue = []
 function queueWatcher(watcher) {
   if (!flushing) {
     queue.push(watcher)
@@ -44,7 +45,7 @@ function queueWatcher(watcher) {
 
   if (!waiting) {
     waiting = true
-    nextTick(flushSchedulerQueue)
+    nextTick(flushSchedulerQueue) // flushSchedulerQueue是一个函数,如下
   }
 }
 ```
@@ -59,6 +60,7 @@ function flushSchedulerQueue() {
   }
 }
 ```
+从这里可以看出，`flushSchedulerQueue`是真正执行更新的地方,`watcher.run`中执行了组件更新函数
 
 **nextTick**
 ```js
@@ -132,3 +134,34 @@ function flushCallbacks () {
   }
 }
 ```
+
+### 案例分析
+```html
+<div id="d1">{{foo}}</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      foo: 'hey~'
+    },
+    mounted() {
+      this.foo = 'haha'
+      this.$nextTick(() => {
+        console.log(d1.innerHTML)
+      })
+    }
+  })
+</script>
+```
+1. `this.foo`会使触发set更新函数
+2. `callbacks = [flushSchedulerQueue]`
+3. 执行$nextTick后
+4. 添加$nextTick中的cb
+```js
+callbacks = [flushSchedulerQueue, () => {
+  console.log(d1.innerHTML)
+}]
+```
+5. `callbacks`依次执行
+6. 先触发`flushSchedulerQueue`更新函数
+6. 触发cb，拿到更新后的值
