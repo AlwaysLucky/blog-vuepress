@@ -154,14 +154,32 @@ function flushCallbacks () {
 </script>
 ```
 1. `this.foo`会使触发set更新函数
-2. `callbacks = [flushSchedulerQueue]`
-3. 执行$nextTick后
-4. 添加$nextTick中的cb
+2. 经过notify->watcher的update->queueWatcher->next(flushSchedulerQueue)之后
+2. callbacks中自动存入了一个flushSchedulerQueue
+```js
+callbacks = [flushSchedulerQueue]
+```
+3. 执行$nextTick后，$nextTick传入的函数会直接添加到callbacks中
+4. 此时的callbacks
 ```js
 callbacks = [flushSchedulerQueue, () => {
   console.log(d1.innerHTML)
 }]
 ```
-5. `callbacks`依次执行
-6. 先触发`flushSchedulerQueue`更新函数
-6. 触发cb，拿到更新后的值
+5. `callbacks`依次执行时
+6. 先触发`flushSchedulerQueue`，其中执行了dom更新
+6. 再触发$nextTick的回调时，就可以拿到更新后的值
+
+### 整体流程
+1. set中触发notify
+2. 执行watcher的update
+3. queneWatcher(watcher)
+4. nextTick(flushSchedulerQueue)
+5. callbacks.push(flushSchedulerQueue)
+6. timerFunc() // 放入异步队列
+7. 同步任务执行完后执行异步任务
+8. 遍历callbacks执行flushSchedulerQueue
+9. 执行watcher.run()
+10. run中执行了watcher.get()
+11. get()中执行了this.getter.call(vm, vm) // getter就是updateComponent
+12. vm._update(vm._render(), hydrating) 更新dom

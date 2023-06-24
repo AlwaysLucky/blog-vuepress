@@ -8,9 +8,9 @@ summary: webpack vue-cli
 
 ## 准备
 
-1. 删除@cli 相关的依赖
+1. 删除@vue/cli-* 相关的依赖
 2. 新建 webpack.dev.js
-
+ 
 ```js
 module.exports = env => {
   return {}

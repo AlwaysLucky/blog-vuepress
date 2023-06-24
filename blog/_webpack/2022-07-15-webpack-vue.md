@@ -88,6 +88,30 @@ yarn dev
 }
 ```
 `webpack4`使用的是`url-loader`和`file-loader`
+## 添加图片压缩
+1. yarn add image-minimizer-webpack-plugin imagemin --D
+2. yarn add imagemin-gifsicle imagemin-jpegtran imagemin-optipng imagemin-svgo -D
+```js
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+module.exports = {
+  optimization: {
+    minimizer: [
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            plugins: [
+              ["gifsicle", { interlaced: true }],
+              ["jpegtran", { progressive: true }],
+              ["optipng", { optimizationLevel: 5 }],
+            ]
+          }
+        }
+      })
+    ]
+  }
+}
+```
 ## 添加babel
 1. yarn add @babel/core @babel/preset-env babel-loader -D
 2. 配置js文件解析
