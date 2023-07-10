@@ -52,25 +52,6 @@ Number.isNaN('a') // false
 ```
 > isNaN存在的问题：非数字会尝试转换数字，如果不能转换，则返回true
 
-## for in & for of
-### 相同点
-1. 都可用于迭代数据
-2. for in 遍历的到的是key
-3. for of 遍历的到的value
-4. for of 是es6API
-### 不同点
-* 遍历对象
-1. for in ✅
-2. for of ❌
-* Map,Set
-1. for of ✅
-2. for in ❌
-* generator
-1. for of ✅
-2. for in ❌
-### 本质
-1. for in 用于可枚举数据
-2. for of 用于可迭代数据
 ## 执行上下文
 1. `全局执行上下文`：执行JS前就已创建
 2. `函数执行上下文`：函数执行前创建
