@@ -1,4 +1,10 @@
-## 玩转webpack笔记
+---
+title: 玩转webpack笔记
+date: 2023-06-24
+tags:
+  - webpack
+summary: 玩转webpack
+---
 
 ## 基础篇
 **为什么需要构建工具**
