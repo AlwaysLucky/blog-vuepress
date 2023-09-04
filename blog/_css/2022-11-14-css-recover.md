@@ -162,7 +162,7 @@ position: static|relative|absolute|fixed|sticky
 2. 方法二：box设置font-size: 24px // 字号与span一致
 
 #### 区别
-1. 对于数值；自元素会继承数值
+1. 对于数值；子元素会继承数值
 2. 对于百分比或长度；则会继承最终的计算值
 ## 场景应用：
 1. 三角形

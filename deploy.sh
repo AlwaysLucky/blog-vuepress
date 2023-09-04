@@ -11,6 +11,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@124.220.18.152:/home/git/blog-vuepress.git main
+git push -f git@blog:/home/git/blog-vuepress.git main
 
 cd -

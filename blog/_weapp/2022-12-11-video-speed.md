@@ -72,7 +72,7 @@ summary: 倍速研究
     - 控制台里直接_0x4acc9b=4就可以改掉它
 3. 放开断点
 4. 发现进入到最开始设置的那个断点
-5. 逐步执行的是否发现了一个可疑的地方，如下图
+5. 逐步执行时发现了一个可疑的地方，如下图
 
 ![https://tzhen.vip/assets/video/video1-10.png](https://tzhen.vip/assets/video/video1-10.png)
 

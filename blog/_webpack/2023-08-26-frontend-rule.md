@@ -1,11 +1,6 @@
 ---
 title: 前端工程化之规范
 date: 2023-08-26
-tags:
-  - editorconfig
-  - eslint
-  - stylelint
-  - commitlint
 summary: 前端工程化之规范
 ---
 
