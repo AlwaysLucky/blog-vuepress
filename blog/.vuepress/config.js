@@ -5,14 +5,14 @@ module.exports = (options, context, api) => {
     description: "Web development, Frontend, JavaScript",
     theme: "@vuepress/blog",
     base: '/blog-vuepress/',
-    plugins: [
-      [
-        "@vuepress/google-analytics",
-        {
-          ga: process.env.GA
-        }
-      ]
-    ],
+    // plugins: [
+    //   [
+    //     "@vuepress/google-analytics",
+    //     {
+    //       ga: process.env.GA
+    //     }
+    //   ]
+    // ],
     themeConfig: {
       directories: [
         {

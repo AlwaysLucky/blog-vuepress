@@ -6,6 +6,16 @@ tags:
 summary: JavaScript查漏补缺
 ---
 
+## 暂时性死区
+> ES6规定，如果区块中存在let和const命令，声明变量的区块从一开始就形成封闭区域。声明之前使用这些变量就会报错
+
+```js
+var num = 0
+{
+  num = 1
+  let num = 0
+}
+```
 ## 数据类型
 ### 基本类型
     - string
@@ -240,28 +250,3 @@ typeof Function.prototype === 'function'
     - addEventListener
     - removeEventListener
 > dom2级 > dom0级
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 渲染机制 

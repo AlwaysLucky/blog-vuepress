@@ -6,34 +6,121 @@ tags:
 summary: 复习
 ---
 
-## src和href的区别
-### src
+## HTML嵌套规则
+1. 块级元素可以包含內联元素
+2. 块级元素不一定能包含块级元素
+```html
+<p>
+  this is p element
+  <p>this is p element child</p>
+</p>
+```
+**p**包含**p/div/section**都是不合法的
+3. 內联元素不能包含块级元素（a 除外）
+```html
+<a>
+  <div>this is correct</div>
+</a>
+```
+**a**包含**div**是合法的
+
+* [参考文档](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element)
+## HTML5的更新
+  ### 新增语义化标签
+  header、main、footer、section、article、nav、aside ...
+  ### 移除的标签
+  big、center、font、frame、frameset ...
+  ### 媒体标签
+    1. audio
+    ```html
+    <audio src="" controls autoplay loop="true">
+    ```
+    2. video
+    ```html
+    <video scr="" poster="1.jpg" controls>
+      <source src='aa.flv' type='video/flv'></source>
+      <source src='aa.mp4' type='video/mp4'></source>
+    </video>
+    ```
+  poster: 未播放时封面；controls: 控制面板；source: 兼容浏览器支持格式
+  ### 表单
+  - email
+  - url
+  - number
+  - search: 输入框后跟一个清除的图标
+  - range: 
+  - color
+  - time
+  - date
+  ### DOM查询
+  1. document.querySelector
+  2. document.querySelectorAll
+  ### web存储
+  1. sessionStorage
+  2. localStorage
+  ### darg/canvas
+  搁置
+  ### 进击的HTML
+  1. 汉子拼音
+  ```html
+  <ruby>
+    前端开发进阶
+    <rt>qianduankaifajinjie</rt>
+  </ruby>
+  ```
+  2. 展开收起
+  ```html
+  <details>
+    <summary>前端开发核心知识进阶</summary>
+    前端领域，入门简单，可是想要更上一层楼，切难上加难，市场上高级/资深前端工程师凤毛麟角。这当然未必完全是坏事，一旦突破瓶颈，在技能上脱颖而出，便是更广阔的空间，那么，如何夯实基础到突破瓶颈？
+  </details>
+  ```
+  3. 进度条
+  ```html
+  <progress value="20" max="100"></progress>
+  ```
+  4. 度量
+  ```html
+  <meter value="50" min="0" max="100" low="20" high="66"></meter>
+  ```
+
+## src与href的区别
+
+**src**
 * source的缩写，指向外部资源位置；指向的内容会嵌入到标签所在位置；请求src资源时会将其指向的资源下载并应用到文档内，如：js脚本、img、iframe。
 如`<script src="1.js">`请求js时，会暂停其他资源的下载与处理，直到将该资源`加载`、`编译`、`执行`完毕,这也是为什么将js放在底部的原因
-### href
+
+**href**
 * Hypertext Reference(超文本引用);它指向网络资源所在位置，建立和当前元素(锚点)或文档(链接)的链接关系。浏览器识别到它指向的文件时，会并行下载，不会停止对当前文档的处理。
 这也是为什么使用link加载css，而不使用@import的原因
 
 ## HTML语义化
-语义化是指根据内容的结构化，选择合适的标签。通俗来讲就是选择正确的标签做正确的事
-### 优点
+> 语义化是指根据内容的结构化，选择合适的标签。通俗来讲就是选择正确的标签做正确的事
+
+**优点**
 1. 对机器友好，带有语义的文字表现力丰富，利于搜索引擎爬虫爬取信息，利于SEO。 支持读屏软件，根据文章自动生成目录
 2. 对开发友好，增强可读性，结构清晰，开发者能够清晰的看出结构，有利与团队开发维护
-### 语义化标签
-> header、main、footer、section、article、nav、aside（HTML5新增）
+
+**语义化标签**
+> header、main、footer、section、article、nav、aside
 
 ## DOCTYPE的作用
-DOCTYPE是HTML5一种标准通用标记语言的文档类型声明，目的是告诉浏览器(解析器)以什么文档类型定义来解析文档，不同的渲染模式会影响css，甚至js代码的解析。必须放在第一行。
-DOCTYPE不存在或格式不正确会以怪异模式渲染
-### 渲染页面的两种方式
-1. 标准模式：`CSS1Compat`; 使用W3C标准解析渲染页面，以支持的最高标准渲染页面。（默认模式）
-2. 怪异模式(混杂模式): `BackCompat`; 浏览器使用自己的怪异模式解析渲染页面，页面以一种宽松向后兼容的方式呈现
+- **DOCTYPE**是HTML5一种标准通用标记语言的文档类型声明，目的是告诉浏览器(解析器)以什么文档类型定义来解析文档，不同的渲染模式会影响css，甚至js代码的解析。必须放在第一行。
+- **DOCTYPE**不存在或格式不正确会以怪异模式渲染
+
+## 渲染页面的两种方式
+### 标准模式
+`CSS1Compat`; 使用W3C标准解析渲染页面，以支持的最高标准渲染页面。（默认模式）
+### 怪异模式(混杂模式)
+`BackCompat`; 浏览器使用自己的怪异模式解析渲染页面，页面以一种宽松向后兼容的方式呈现
 > `document.compatMode`获取当前浏览器渲染方式
+
 ## async与defer
-都是使用异步方式加载JS文件，不会阻塞页面的解析
+> 都是使用异步方式加载JS文件，不会阻塞页面的解析
 ### 执行顺序
 * defer: 并行加载，按照script标签顺序执行
 * async: 并行加载，下载完立刻执行，不会按照script标签顺序执行
+![https://tzhen.vip/assets/async-defer.png](https://tzhen.vip/assets/async-defer.png)
 ### defer的执行时机
 * document.readState状态为interactive时执行。
 ### readState的几种状态
@@ -46,9 +133,8 @@ document.addEventListener('readystatechange', event => {
 2. interactive: 文档结束"正在加载状态"，dom可以被访问；图像，样式表等资源还在加载
 3. complete: 页面所有内容都已加载
 
-## 常用meta标签
-meta由name,content定义，用来描述网页文档的属性，比如：网页作者，关键词，描述。
-除http固定了一些name，还可以自定义name
+## meta标签
+> meta由name,content定义，用来描述网页文档的属性，比如：网页作者，关键词，描述。除http固定了一些name，还可以自定义name
 1. `<meta charset="UTF-8">` 描述HTML文档编码类型
 2. `<meta name="keywords" content="关键词">` 页面关键词
 3. `<meta name="description" content="描述">` 页面描述
@@ -69,42 +155,24 @@ meta由name,content定义，用来描述网页文档的属性，比如：网页�
 	4. follow: 页面上的链接可被查询
 	5. noindex: 文件将不被检索
 	6. nofollow: 页面链接不可被查询
+7. 跳转
+```html
+<meta http-equiv="Refresh" content="5; URL=https://www.baidu.com">
+```
+8. 刷新
+```html
+<meta http-equiv="Refresh" content="5">
+```
 
-	## HTML5的更新
-	### 新增语义化标签
-	header、main、footer、section、article、nav、aside ...
-	### 移除的标签
-	big、center、font、frame、frameset ...
-	### 媒体标签
-	1. audio
-	```html
-	<audio src="" controls autoplay loop="true">
-	```
-	2. video
-	```html
-	<video scr="" poster="1.jpg" controls>
-		<source src='aa.flv' type='video/flv'></source>
-		<source src='aa.mp4' type='video/mp4'></source>
-	</video>
-	```
-poster: 未播放时封面；controls: 控制面板；source: 兼容浏览器支持格式
-### 表单
-- email
-- url
-- number
-- search: 输入框后跟一个清除的图标
-- range: 
-- color
-- time
-- date
-### DOM查询
-1. document.querySelector
-2. document.querySelectorAll
-### web存储
-1. sessionStorage
-2. localStorage
-### darg/canvas
-搁置
+## 移动端注意事项
+1. 打电话/发短信/写邮件
+```html
+<a href="tel: 110">打电话给110</a>
+<a href="sms: 110">发短信给110</a>
+<a href="mailto: 110@govn.com">发邮件给110</a>
+<a href="mailto: 110@govn.com?cc=baby@family.com&bcc=mother@family.com">发邮件给100并抄送baby，mother</a>
+```
+
 ## img的srcset属性的作用
 根据`srcset`的设置来选择合适的图片
 ```html
@@ -286,3 +354,4 @@ for + id 表示一组有关系的控件
 搁置
 
 ## WEB标准和W3c标准
+* [HTML Living Standard](https://html.spec.whatwg.org/multipage/#toc-semantics)

@@ -45,8 +45,9 @@ summary: CSS查漏补缺
 - 只使用link可以按顺序并行加载
 > 总体上link优于@import
 ## BFC
-Block Formatting Context: 块级格式化上下文；
-css世界的结界：内部形成一个封闭空间，里面的元素不会影响到外面
+Block Formatting Context: 块级格式化上下文；在这个区域中，只有block box参与布局；而BFC的一系列特点和规则规定了在这个特殊的区域中如何进行布局，如何进行定位，区域内元素的互相关系和相互作用是怎样的，这个特殊的区域不受外界影响
+
+> css世界：css世界的结界，内部形成一个封闭空间，里面的元素不会影响到外面
 ### 创建BFC
 1. 根元素html
 2. overflow: scroll, auto, hidden
@@ -54,6 +55,20 @@ css世界的结界：内部形成一个封闭空间，里面的元素不会影�
 4. display: table-cell, table-caption, inline-block
 5. display: flex/grid的直接子元素
 6. float的值不为none
+
+### BFC特点
+1. BFC区域不会与浮动元素重叠，而是依次排列
+2. BFC区域是一个独立的渲染容器，容器内的元素和BFC区域外的元素之间不会有任何干扰
+3. 浮动元素高度参与BFC高度计算
+
+### 应用
+1. 解决浮动高度塌陷
+2. margin合并 
+3. 自适应多拦布局
+
+## 居中
+
+
 ## 层叠上下文
 是HTML中的一个三维的概念。如果一个元素含有层叠上下文，则比不具有层叠上下文的层级要高。
 ### 创建层叠上下文

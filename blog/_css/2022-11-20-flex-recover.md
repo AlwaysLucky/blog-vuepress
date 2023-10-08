@@ -6,7 +6,7 @@ tags:
 summary: flex查漏补缺
 ---
 
-## 先来分析一道题
+## 分析一道题
 ```html
 <div class="flex">
   <div class="flex-child">1</div>
