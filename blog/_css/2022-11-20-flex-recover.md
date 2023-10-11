@@ -6,7 +6,14 @@ tags:
 summary: flex查漏补缺
 ---
 
-## 分析一道题
+## flex单值语法
+1. flex: initial = flex: 0 1 auto
+2. flex: 0 = flex: 0 1 0%
+3. flex: none = flex: 0 0 auto
+4. flex: 1 = flex: 1 1 0%
+5. flex: auto = flex: 1 1 auto
+
+## 分析1/2/3各占的宽度是多少
 ```html
 <div class="flex">
   <div class="flex-child">1</div>
@@ -63,7 +70,7 @@ summary: flex查漏补缺
   flex: 2 0 18px;
 }
 ```
-现在总空间只有300px, 1占了20px，2占了100px，3占了200px,320px该如何分配
+现在总空间只有300px, 1占了18px，2占了100px，3占了200px,320px该如何分配
 ### 空间不足分析
 1. `1`分配固定的18，则剩余282
 2. 现在`2`和`3`加起来是300，300>282，没有多余空间
