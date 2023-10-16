@@ -1,5 +1,5 @@
 ---
-title: css实现无缝滚动
+title: CSS实现无缝滚动
 date: 2022-10-10
 tags:
   - css

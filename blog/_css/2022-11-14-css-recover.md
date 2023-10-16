@@ -66,8 +66,27 @@ Block Formatting Context: 块级格式化上下文；在这个区域中，只有
 2. margin合并 
 3. 自适应多拦布局
 
-## 居中
-
+## % 相对于谁
+* position: absolute
+> 以父元素第一个定位属性不为static为参照物，%是相对于参照物的，left相对于参照物的width，top相对于参照物的height
+* position: relative
+> %相对于自身，left相对于自身的width，top相对于自身的height
+* position: fixed
+> %相对于视口，left相对于视口的width
+* margin和padding
+> %相对于父元素的width
+* border-radius
+> %相对于自身宽高
+* background-size
+> %相对于自身宽高
+* transform: translate
+> %相对于自身宽高
+* text-indent
+> %相对于父元素的width
+* font-size
+> %相对于父元素的字体大小进行换算
+* line-height
+> %相对于自身元素的font-size数值
 
 ## 层叠上下文
 是HTML中的一个三维的概念。如果一个元素含有层叠上下文，则比不具有层叠上下文的层级要高。
