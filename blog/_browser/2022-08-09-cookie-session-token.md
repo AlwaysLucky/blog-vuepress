@@ -14,10 +14,10 @@ summary: Cookie Session Token
 * cookie以键值对形式存在，可以设置多个, eg:name=tianzhen;id=123
 * 存储上限4kb
 ### 属性
-1. HttpOnly // 无法通过document.cookie访问
-2. Secure=true // 只能在https下发送
-3. max-age/expires // 设置过期时间
-4. domain // 只能在自己域名下访问
+1. HttpOnly：无法通过document.cookie访问
+2. Secure=true：只能在https下发送
+3. max-age/expires：设置过期时间
+4. domain：只能在自己域名下访问
 ## Session
 * 识别用户发起的机制称为Session(会话机制)
 <!-- * session也是由服务端生成，通常命名为SessionId,常用cookie的形式来发送到浏览器 -->
@@ -30,10 +30,10 @@ summary: Cookie Session Token
 2. 客户端将Token缓存在本地
 3. 之后在Header中携带它
 ### server如何校验Token是否合法？
-jwt由三部分组成
-1. header： // 指定了签名算法
-2. payload： // 服务端存数据的地方，如userId:123，设置过期时间
-3. Signature： // 签名
+**jwt由三部分组成**
+1. header：指定了签名算法
+2. payload：服务端存数据的地方，如userId:123，设置过期时间
+3. Signature：签名
 ### 校验
 * server接收到浏览器传过来的Token, 取出token中的header + payload，
 * 再根据密钥(生成token时设置的字符串)生成签名 

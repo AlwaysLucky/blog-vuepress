@@ -250,3 +250,12 @@ typeof Function.prototype === 'function'
     - addEventListener
     - removeEventListener
 > dom2级 > dom0级
+
+## {} 与 Object.create
+1. {}创建空对象，原型指向**Object.prototype**
+2. **Object.create**创建空对象，原型指向传入的参数，没有则为**null**
+
+
+
+## 跨域 
+页面间跨域
