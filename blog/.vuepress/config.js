@@ -103,7 +103,7 @@ module.exports = (options, context, api) => {
           link: "/browser/"
         },
         {
-          text: "小程序",
+          text: "杂谈",
           link: "/weapp/"
         },
         {
