@@ -140,7 +140,7 @@ module.exports = (options, context, api) => {
       smoothScroll: true
     },
     alias: {
-      "@assets": path.resolve(__dirname, "assets")
+      "@assets": path.resolve(__dirname, "../assets")
     },
     port: 8090,
     configureWebpack: (config, isServer) => {
