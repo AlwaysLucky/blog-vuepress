@@ -88,8 +88,8 @@ docker run -itd --restart=always  --name gitlab-runner -v /data/gitlab-runner/co
 ```
 
 ### 注册
-![https://tzhen.vip/assets/gitlab-runner.jpg](https://tzhen.vip/assets/gitlab-runner.jpg)
-![https://tzhen.vip/assets/gitlab-runner.jpg](https://tzhen.vip/assets/gitlab-runner-success.jpg)
+![@assets/webpack/gitlab-runner.jpg](@assets/webpack/gitlab-runner.jpg)
+![@assets/webpack/gitlab-runner.jpg](@assets/webpack/gitlab-runner-success.jpg)
 
 * Settings->CICD->Runners->New project runner
 * 点击New project runner之后会出现注册的步骤
@@ -182,7 +182,7 @@ http {
 
 ## 测试
 上面工作都准备完了就提交看看吧，不出意外的话很快就出意外，第一次基本上是不会成功的
-![https://tzhen.vip/assets/gitlab-pipeline.jpg](https://tzhen.vip/assets/gitlab-pipeline.jpg)
+![@assets/webpack/gitlab-pipeline.jpg](@assets/webpack/gitlab-pipeline.jpg)
 
 ### 可能出现的问题
 1. 如果一直pending，检查runner是否在运行，是否是绿色点点

@@ -7,7 +7,7 @@ summary: vue
 ---
 
 ## 要实现的效果如下
-![计数器](https://tzhen.vip/assets/countNumber.png)
+![计数器](@assets/vue/countNumber.png)
 ## 实现
 ```html
 <textarea v-model="inputValue" v-count="100" placeholder="输入.."></textarea>

@@ -120,7 +120,7 @@ summary: 复习
 ### 执行顺序
 * defer: 并行加载，按照script标签顺序执行
 * async: 并行加载，下载完立刻执行，不会按照script标签顺序执行
-![https://tzhen.vip/assets/async-defer.png](https://tzhen.vip/assets/async-defer.png)
+![@assets/browser/async-defer.png](@assets/browser/async-defer.png)
 ### defer的执行时机
 * document.readState状态为interactive时执行。
 ### readState的几种状态
